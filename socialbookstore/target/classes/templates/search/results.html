@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" 
+    	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>Book Search Results</title>
+</head>
+<body>
+<div class="container"> 
+	<br><br><br>
+	<h2>Book Results</h2>
+	<br>
+	<div th:each="book: ${books}">
+		<hr>
+		<h2 th:text="${book.title}"></h2>
+		<strong>Category: </strong><span th:text="${book.bookCategory}"></span><br/>
+		<strong>Authors:  </strong><span th:text="${book.bookAuthors}"></span><br/><br/>
+		<p th:text="${book.summary}"/>
+		<a class="btn btn-primary" th:href="@{/user/request-book/{id}(id=${book.id})}">Add request</a>
+	</div>
+	<hr>
+	    <p>
+	    	<a th:href="@{/user/main}" class="btn btn-primary btn-sm mb-3">Home</a>
+	    	<a th:href="@{/user/book-offers}" class="btn btn-primary btn-sm mb-3">My Books</a>
+	    	<a th:href="@{/user/requests}" class="btn btn-primary btn-sm mb-3">My Requests</a>
+	    	<a th:href="@{/search/form}" class="btn btn-primary btn-sm mb-3">Search</a>
+	    	<a th:href="@{/logout}" class="btn btn-danger btn-sm mb-3">Logout</a>
+	    </p>
+</div>
+</body>
+</html>

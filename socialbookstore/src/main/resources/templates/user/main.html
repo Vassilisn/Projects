@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" 
+    	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>Homepage</title>
+</head>
+
+
+<body>
+<div class="container">
+	<br> <br> <br>
+	<h2>Welcome to Social Bookstore</h2>
+ 
+	<hr>
+ 
+	<div sec:authorize="hasRole('ROLE_ANONYMOUS')">
+		<p>
+    		<a th:href="@{/login}" class="btn btn-primary btn-sm mb-3" th:text="Login"></a>
+    		<a th:href="@{/register}" class="btn btn-primary btn-sm mb-3" th:text="Register"></a>
+    	</p>
+	</div>
+
+	<div sec:authorize="isAuthenticated()">
+  
+  		<h2>Actions</h2>
+  		
+  		<div th:if="${profile.fullName == null}">
+			<p class="alert alert-warning" role="alert">
+				<a th:href="@{/user/edit-profile}">Please complete the profile form first to have access to actions.</a></p>
+		</div>
+
+	    <hr>
+	    <p>
+	    	<a th:href="${profile.fullName == null ? 'javascript:void(0)' : '/'}">  </a>
+	    	
+	    	<a th:href="@{/user/main}" class="btn btn-primary btn-sm mb-3">Home</a>
+	    	<a th:href="${profile.fullName == null ? 'javascript:void(0)' : '/user/book-offers'}"
+	    		class="btn btn-primary btn-sm mb-3"> My Books </a>
+	    	
+	    	<a th:href="${profile.fullName == null ? 'javascript:void(0)' : '/user/requests'}" 
+	    		class="btn btn-primary btn-sm mb-3"> My Requests </a>
+	    	
+	    	<a th:href="${profile.fullName == null ? 'javascript:void(0)' : '/search/form'}"
+	    		class="btn btn-primary btn-sm mb-3"> Search </a>
+	    	
+	    	<a th:href="@{/logout}" class="btn btn-danger btn-sm mb-3">Logout</a>
+	    </p>
+	    
+	</div>
+</div>
+</body>
+</html>

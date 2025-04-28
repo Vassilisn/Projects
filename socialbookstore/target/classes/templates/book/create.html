@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>Create Book Offer</title>
+</head>
+
+<style>
+	.container {
+		width: 40%
+	}
+	input, select, textarea {
+		width:100%;
+		margin-top: 10px;
+	}
+</style>
+
+<body>
+
+<div class="container">
+	<br><br><br>
+	<form action="post" th:action="@{/user/save-offer}" th:object="${offer}" method="post">
+		<h2>Create Book Offer</h2>
+		<input type="text" th:field="*{title}" placeholder="Book Title" /> <br/><br/>
+		<input type="text" th:field="*{bookAuthors}" placeholder="Author(s) - seperate multiple authors with comma" /> <br/><br/>
+		<select th:field="*{bookCategory}" required>
+	    	<option value="">Select Category</option>
+	    	<option value="Art">Art</option>
+	    	<option value="Comic">Comic</option>
+	    	<option value="Fantasy">Fantasy</option>
+	    	<option value="Fiction">Fiction</option>
+	    	<option value="Biographies">Biographies</option>
+	    	<option value="History">History</option>
+	    	<option value="Science">Science</option>
+	    	<option value="Literature">Literature</option>
+	    	<option value="Adventure">Adventure</option>
+	    	<option value="Crime">Crime</option>
+	    	<option value="Other">Other</option>
+	    </select> <br/><br/>
+	    
+	    <textarea rows="5" th:field="*{summary}" placeholder="Book Summary"></textarea><br/><br/>
+		
+		<button type="submit" class="btn btn-info col-2">Create</button> 
+		<a href="/user/book-offers">Go back</a>
+	</form>
+	
+	<hr>
+	    <p>
+	    	<a th:href="@{/user/main}" class="btn btn-primary btn-sm mb-3">Home</a>
+	    	<a th:href="@{/user/book-offers}" class="btn btn-primary btn-sm mb-3">My Books</a>
+	    	<a th:href="@{/user/requests}" class="btn btn-primary btn-sm mb-3">My Requests</a>
+	    	<a th:href="@{/search/form}" class="btn btn-primary btn-sm mb-3">Search</a>
+	    	<a th:href="@{/logout}" class="btn btn-danger btn-sm mb-3">Logout</a>
+	    </p>
+</div>
+</body>
+</html>

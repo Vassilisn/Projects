@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>Search</title>
+</head>
+<style>
+	input, select{
+		width: 300px
+	}
+	
+	.container {
+		margin: 0 auto; 
+		text-align: center;
+	} 
+</style>
+
+<body>
+
+	<div class="container">
+		<form th:action="@{/search}" th:object="${search}" method="GET">
+			<br><br>
+			<h2>Search Criteria</h2>
+			<br>
+			<input th:field="*{titles}" placeholder="Add titles (seperate with commas)"><br><br>
+			<input th:field="*{authors}" placeholder="Add authors (seperate with commas)"><br><br>
+			<select th:field="*{type}" required>
+		      <option value="">Select type of search</option>
+		      <option value="Exact">Exact</option>
+		      <option value="Approx">Approximate</option>
+		    </select> <br/><br>
+			<button type="Submit" class="btn btn-info col-2"> Search </button>
+		</form>
+	</div>
+
+</body>
+</html>

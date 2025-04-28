@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>Edit User Profile</title>
+</head>
+
+<style>
+	.container {
+		width: 40%
+	}
+	input, select, textarea {
+		width:100%;
+		margin-top: 10px;
+	}
+</style>
+
+<body>
+
+<div class="container">
+	<br><br><br>
+	<form th:action="@{/user/saveProfile}" th:object="${user}" method="post">
+	    <h3>Edit Profile</h3><br><br>
+	    <input hidden type="text" th:field="*{username}"/>
+	    <h5>Full Name</h5>
+	    <input type="text" th:field="*{fullName}"/> <br /><br />
+	    <h5>Address</h5>
+	    <input type="text" th:field="*{address}"/> <br /><br />
+	    <h5>Age</h5>
+	    <input type="number" th:field="*{age}"/> <br /><br />
+	    <h5>Phone Number</h5>
+	    <input type="text" th:field="*{phoneNumber}"/> <br /><br /> 
+	    
+	    <h5>Preferred Book Categories:</h5>
+		<input type="checkbox" th:field="*{favoriteBookCategories}" value="Art"> Art<br>
+		<input type="checkbox" th:field="*{favoriteBookCategories}" value="Comic"> Comic<br>
+		<input type="checkbox" th:field="*{favoriteBookCategories}" value="Fantasy"> Fantasy<br>
+		<input type="checkbox" th:field="*{favoriteBookCategories}" value="Fiction"> Fiction<br>
+	    <input type="checkbox" th:field="*{favoriteBookCategories}" value="Biographies"> Biographies<br>
+	    <input type="checkbox" th:field="*{favoriteBookCategories}" value="History"> History<br>
+	    <input type="checkbox" th:field="*{favoriteBookCategories}" value="Science"> Science<br>
+	    <input type="checkbox" th:field="*{favoriteBookCategories}" value="Literature"> Literature<br>
+	    <input type="checkbox" th:field="*{favoriteBookCategories}" value="Adventure"> Adventure<br>
+	    <input type="checkbox" th:field="*{favoriteBookCategories}" value="Crime"> Crime<br>
+	    <input type="checkbox" th:field="*{favoriteBookCategories}" value="Other"> Other<br>
+	    <br/>
+	    <input type="text" th:field="*{favoriteBookAuthors}" placeholder="Favorite Authors (seperate with commas)"/>
+	    <br/><br/>
+	    <button type="submit" class="btn btn-info col-2">Save Profile</button> 
+    	
+	</form>
+</div>
+</body>
+</html>
